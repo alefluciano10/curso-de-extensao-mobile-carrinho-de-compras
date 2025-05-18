@@ -102,6 +102,7 @@ class _CarrinhoComprasPageState extends State<CarrinhoComprasPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Icon(Icons.shopping_cart_outlined, color: Colors.teal[800]),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const Text(
@@ -140,26 +141,71 @@ class _CarrinhoComprasPageState extends State<CarrinhoComprasPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(produto.nome),
+                      child: Text(
+                        produto.nome,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('R\$${produto.preco.toStringAsFixed(2)}'),
+                      child: Text(
+                        'R\$${produto.preco.toStringAsFixed(2)}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton.icon(
-                        label: Text('Adiconar'),
+                        label: Text(
+                          'Adicionar',
+                          style: TextStyle(color: Colors.teal[800]),
+                        ),
                         onPressed: () {
                           adicionarAoCarrinho(produto.preco);
                         },
-                        icon: Icon(Icons.shopping_cart),
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.teal[800],
+                        ),
                       ),
                     ),
                   ],
                 ),
               );
             },
+          ),
+        ),
+      ),
+
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16),
+        color: Colors.white,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.teal[800],
+            borderRadius: BorderRadius.circular(25),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.attach_money, color: Colors.white),
+              const SizedBox(width: 8),
+              Text(
+                'Total: R\$${total.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),

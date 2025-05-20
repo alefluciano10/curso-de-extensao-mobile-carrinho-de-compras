@@ -141,7 +141,7 @@ class _CarrinhoComprasPageState extends State<CarrinhoComprasPage> {
                       Expanded(
                         child: Image.network(
                           produto.imagemUrl,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           height: double.infinity,
                         ),
                       ),

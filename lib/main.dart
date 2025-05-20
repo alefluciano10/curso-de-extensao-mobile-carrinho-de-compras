@@ -102,15 +102,15 @@ class _CarrinhoComprasPageState extends State<CarrinhoComprasPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Icon(Icons.shopping_cart_outlined, color: Colors.teal[800]),
-        backgroundColor: Colors.white,
+        leading: Icon(Icons.shopping_cart_outlined, color: Colors.white),
+        backgroundColor: Colors.teal[800],
         centerTitle: true,
         title: const Text(
           'Carrinho de Compras',
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
       ),
@@ -128,54 +128,61 @@ class _CarrinhoComprasPageState extends State<CarrinhoComprasPage> {
             itemBuilder: (BuildContext context, index) {
               var produto = produtos[index];
               return Card(
-                elevation: 6,
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                shadowColor: Colors.teal[800],
                 color: Colors.white,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        produto.imagemUrl,
-                        fit: BoxFit.fill,
-                        height: double.infinity,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        produto.nome,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                child: Container(
+                  margin: EdgeInsets.only(top: 12.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Image.network(
+                          produto.imagemUrl,
+                          fit: BoxFit.fill,
+                          height: double.infinity,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'R\$${produto.preco.toStringAsFixed(2)}',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          produto.nome,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextButton.icon(
-                        label: Text(
-                          'Adicionar',
-                          style: TextStyle(color: Colors.teal[800]),
-                        ),
-                        onPressed: () {
-                          adicionarAoCarrinho(produto.preco);
-                        },
-                        icon: Icon(
-                          Icons.shopping_cart,
-                          color: Colors.teal[800],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'R\$${produto.preco.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton.icon(
+                          label: Text(
+                            'Adicionar',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () {
+                            adicionarAoCarrinho(produto.preco);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.teal[800],
+                          ),
+                          icon: Icon(Icons.shopping_cart, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
